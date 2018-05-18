@@ -1,4 +1,4 @@
-package com.inx.customresuablecomponents;
+package com.inx.customreusablecomponent;
 
 import org.junit.Test;
 

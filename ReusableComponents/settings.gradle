@@ -1,1 +1,1 @@
-include ':app', ':customresuablecomponents'
+include ':app', ':customreusablecomponent'
