@@ -13,11 +13,13 @@ import android.widget.Button;
 
 
 public class AlertDialogManager {
+
     Context mContext;
     AlertDialog.Builder builder;
-    String fontcolor = "<font color=";
-    String braches = ">";
-    String font = "</font>";
+    String FONT_COLOR = "<FONT color=";
+    String BRANCH = ">";
+    String FONT = "</FONT>";
+    String BLACK_COLOR = "000000";
     private static AlertDialogManager alertDialogManager = null;
 
     public void setContext(Context context) {
@@ -27,6 +29,9 @@ public class AlertDialogManager {
     }
 
 
+    /*
+     *Alert dialog getInstance
+     */
     public static synchronized AlertDialogManager getInstance() {
         if (alertDialogManager == null) {
             alertDialogManager = new AlertDialogManager();
@@ -50,23 +55,23 @@ public class AlertDialogManager {
      * @param listenener
      */
 
-    public void sampleAlertDialog(String title, String description, int titleColor, int descColor, int posColor, int negColor, String positiveText, String negativeText,
+    public void alertDialog(String title, String description, int titleColor, int descColor, int posColor, int negColor, String positiveText, String negativeText,
                                   final DialogListenener listenener) {
         if(!title.equalsIgnoreCase("")) {
             if ((titleColor != 0)) {
-                builder.setTitle(Html.fromHtml(fontcolor + titleColor + braches + title + font));
+                builder.setTitle(Html.fromHtml(FONT_COLOR + titleColor + BRANCH + title + FONT));
             } else {
                 builder.setTitle(title);
             }
         }
         if ((descColor != 0)) {
-            builder.setMessage(Html.fromHtml(fontcolor + descColor + braches + description + font));
+            builder.setMessage(Html.fromHtml(FONT_COLOR + descColor + BRANCH + description + FONT));
         } else {
             builder.setMessage(description);
         }
 
 
-        builder.setPositiveButton(Html.fromHtml(fontcolor + titleColor + braches + positiveText + font),
+        builder.setPositiveButton( positiveText,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -92,20 +97,19 @@ public class AlertDialogManager {
         // Get the alert dialog buttons reference
         Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-//        Button neutralButton = dialog.getButton(AlertDialog.BUTTON_NEUTRAL);
 
         // Change the alert dialog buttons text and background color
         if (posColor != 0) {
             positiveButton.setTextColor(posColor);
         } else {
-            positiveButton.setTextColor(Color.parseColor("#FFFFFF"));
+            positiveButton.setTextColor(Color.parseColor(BLACK_COLOR));
 
         }
 
         if (negColor != 0) {
             negativeButton.setTextColor(negColor);
         } else {
-            negativeButton.setTextColor(Color.parseColor("#FFFFFF"));
+            negativeButton.setTextColor(Color.parseColor(BLACK_COLOR));
 
         }
 
@@ -123,16 +127,16 @@ public class AlertDialogManager {
      * @param listenener
      */
 
-    public void simpleAlertWithSingle(String title, int titleColor, String description, int descColor, int posColor, String posText, final DialogListenener listenener){
+    public void alertDialog(String title, int titleColor, String description, int descColor, int posColor, String posText, final DialogListenener listenener){
         if(!title.equalsIgnoreCase("")) {
             if ((titleColor != 0)) {
-                builder.setTitle(Html.fromHtml(fontcolor + titleColor + braches + title + font));
+                builder.setTitle(Html.fromHtml(FONT_COLOR + titleColor + BRANCH + title + FONT));
             } else {
                 builder.setTitle(title);
             }
         }
         if ((titleColor != 0)) {
-            builder.setMessage(Html.fromHtml(fontcolor + descColor + braches + description + font));
+            builder.setMessage(Html.fromHtml(FONT_COLOR + descColor + BRANCH + description + FONT));
         } else {
             builder.setMessage(description);
         }
@@ -160,7 +164,60 @@ public class AlertDialogManager {
         if (posColor != 0) {
             positiveButton.setTextColor(posColor);
         } else {
-            positiveButton.setTextColor(Color.parseColor("#FFFFFF"));
+            positiveButton.setTextColor(Color.parseColor(BLACK_COLOR));
+
+        }
+
+
+    }
+
+    /**
+     * It is the alert dialog with custom title and description, Also it has the listener for the
+     * both positive without callback method
+     * @param title
+     * @param titleColor
+     * @param description
+     * @param descColor
+     * @param posColor
+     * @param posText
+     */
+    public void alertDialog(String title, int titleColor, String description, int descColor, int posColor, String posText){
+        if(!title.equalsIgnoreCase("")) {
+            if ((titleColor != 0)) {
+                builder.setTitle(Html.fromHtml(FONT_COLOR + titleColor + BRANCH + title + FONT));
+            } else {
+                builder.setTitle(title);
+            }
+        }
+        if ((titleColor != 0)) {
+            builder.setMessage(Html.fromHtml(FONT_COLOR + descColor + BRANCH + description + FONT));
+        } else {
+            builder.setMessage(description);
+        }
+
+
+        builder.setPositiveButton(posText,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // positive button logic
+                        dialog.dismiss();
+                    }
+                });
+
+
+        // display dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        // Get the alert dialog buttons reference
+        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+        // Change the alert dialog buttons text and background color
+        if (posColor != 0) {
+            positiveButton.setTextColor(posColor);
+        } else {
+            positiveButton.setTextColor(Color.parseColor(BLACK_COLOR));
 
         }
 
@@ -176,33 +233,33 @@ public class AlertDialogManager {
      * @param descColor
      * @param posColor
      * @param negColor
-     * @param neaturalColor
      * @param positiveText
      * @param negativeText
-     * @param neturaText
+     * @param neturalColor
+     * @param neturalText
      * @param listener
      */
 
-    public void simpleAlertWithThreeButton(String title, String description, int titleColor,
+    public void alertDialog(String title, String description, int titleColor,
                                            int descColor, int posColor, int negColor,
-                                           int neaturalColor, String positiveText,
-                                           String negativeText,String neturaText,
+                                            String positiveText,
+                                           String negativeText,int neturalColor,String neturalText,
                                            final DialogListenener listener){
         if(!title.equalsIgnoreCase("")) {
             if ((titleColor != 0)) {
-                builder.setTitle(Html.fromHtml(fontcolor + titleColor + braches + title + font));
+                builder.setTitle(Html.fromHtml(FONT_COLOR + titleColor + BRANCH + title + FONT));
             } else {
                 builder.setTitle(title);
             }
         }
         if ((descColor != 0)) {
-            builder.setMessage(Html.fromHtml(fontcolor + descColor + braches + description + font));
+            builder.setMessage(Html.fromHtml(FONT_COLOR + descColor + BRANCH + description + FONT));
         } else {
             builder.setMessage(description);
         }
 
 
-        builder.setPositiveButton(Html.fromHtml(fontcolor + titleColor + braches + positiveText + font),
+        builder.setPositiveButton(positiveText,
                 new DialogInterface.OnClickListener() {
 
 
@@ -223,11 +280,11 @@ public class AlertDialogManager {
                         dialog.dismiss();
                     }
                 });
-        builder.setNeutralButton(neturaText,
+        builder.setNeutralButton(neturalText,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // negative button logic
+                        // netural button logic
                         listener.onClickNeutral();
                         dialog.dismiss();
                     }
@@ -245,20 +302,20 @@ public class AlertDialogManager {
         if (posColor != 0) {
             positiveButton.setTextColor(posColor);
         } else {
-            positiveButton.setTextColor(Color.parseColor("#FFFFFF"));
+            positiveButton.setTextColor(Color.parseColor(BLACK_COLOR));
 
         }
 
         if (negColor != 0) {
             negativeButton.setTextColor(negColor);
         } else {
-            negativeButton.setTextColor(Color.parseColor("#FFFFFF"));
+            negativeButton.setTextColor(Color.parseColor(BLACK_COLOR));
 
         }
-        if (neaturalColor != 0) {
-            neutralButton.setTextColor(neaturalColor);
+        if (neturalColor != 0) {
+            neutralButton.setTextColor(neturalColor);
         } else {
-            neutralButton.setTextColor(Color.parseColor("#FFFFFF"));
+            neutralButton.setTextColor(Color.parseColor(BLACK_COLOR));
 
         }
     }
