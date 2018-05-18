@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CommonFramework.iml" filepath="$PROJECT_DIR$/CommonFramework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reusablecomponent/commonutilities.iml" filepath="$PROJECT_DIR$/reusablecomponent/commonutilities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reusablecomponent/reusablecomponent.iml" filepath="$PROJECT_DIR$/reusablecomponent/reusablecomponent.iml" />
+    </modules>
+  </component>
+</project>
