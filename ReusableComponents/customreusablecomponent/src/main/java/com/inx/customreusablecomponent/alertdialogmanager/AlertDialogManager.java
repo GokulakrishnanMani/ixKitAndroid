@@ -5,25 +5,27 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 
 /**
- * Created by keerthana on 18/5/18.
+ * Created by Ionixx on 18/5/18.
  */
 
 public class AlertDialogManager {
     Context mContext;
     AlertDialog.Builder builder;
     private static AlertDialogManager alertDialogManager = null;
-   public void setContext(Context context){
+
+    private AlertDialogManager() {
+
+    }
+
+    public void setContext(Context context) {
         this.mContext = context;
-       builder = new AlertDialog.Builder(mContext);
-
-    }
-    private AlertDialogManager(){
+        builder = new AlertDialog.Builder(mContext);
 
     }
 
-    public static synchronized AlertDialogManager getInstance(){
-        if(alertDialogManager == null){
-           alertDialogManager = new AlertDialogManager();
+    public static synchronized AlertDialogManager getInstance() {
+        if (alertDialogManager == null) {
+            alertDialogManager = new AlertDialogManager();
         }
         return alertDialogManager;
     }
@@ -31,13 +33,14 @@ public class AlertDialogManager {
     /**
      * It is the alert dialog with custom title and description, Also it has the listener for the
      * both positive and negative button
+     *
      * @param title
      * @param description
      * @param listenener
      */
 
     public void sampleAlertDialog(String title, String description,
-                                  final DialogListenener listenener){
+                                  final DialogListenener listenener) {
 
         builder.setTitle(title);
         builder.setMessage(description);
@@ -73,15 +76,15 @@ public class AlertDialogManager {
     /**
      * It is the listener of the alert dialog.
      */
-    public interface DialogListenener{
+    public interface DialogListenener {
 
         /**
-         * It is callled up on clicking the possitive button on the alert dialog.
+         * It is called up on clicking the possitive button on the alert dialog.
          */
         public void onClickPositive();
 
         /**
-         * It is callled up on clicking the negative button on the alert dialog.
+         * It is called up on clicking the negative button on the alert dialog.
          */
         public void onClickNegative();
     }
