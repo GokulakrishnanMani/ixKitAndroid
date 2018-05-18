@@ -8,7 +8,7 @@ import android.text.Html;
 import android.widget.Button;
 
 /**
- * Created by Ionixx on 18/5/18.
+ * Created by keerthana on 18/5/18.
  */
 
 
@@ -268,12 +268,12 @@ public class AlertDialogManager {
     public interface DialogListenener {
 
         /**
-         * It is called up on clicking the possitive button on the alert dialog.
+         * It is callled up on clicking the possitive button on the alert dialog.
          */
         public void onClickPositive();
 
         /**
-         * It is called up on clicking the negative button on the alert dialog.
+         * It is callled up on clicking the negative button on the alert dialog.
          */
         public void onClickNeutral();
 
