@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2017 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+<resources>
+
+  <!-- Motion spec for show animation. This should be a MotionSpec resource. -->
+  <attr name="showMotionSpec" format="reference"/>
+  <!-- Motion spec for hide animation. This should be a MotionSpec resource. -->
+  <attr name="hideMotionSpec" format="reference"/>
+
+
+  <declare-styleable name="ThemeEnforcement">
+    <!-- Internal flag used to denote that a style uses new attributes defined by
+         Theme.MaterialComponents, and that the component should check via ThemeEnforcement that the
+         client's app theme inherits from Theme.MaterialComponents.
+
+         Not all usages of new attributes are problematic in the context of a legacy app theme. You
+         should only use this flag if a particular usage is known to cause a visual glitch or crash.
+         For example, tinting a vector drawable with a non-existent theme attribute is known to
+         crash on pre-21 devices. -->
+    <attr name="enforceMaterialTheme" format="boolean"/>
+    <!-- Attribute used to check that a component has a TextAppearance specified on it. -->
+    <attr name="android:textAppearance"/>
+  </declare-styleable>
+
+  <declare-styleable name="ForegroundLinearLayout">
+    <attr name="android:foreground"/>
+    <attr name="android:foregroundGravity"/>
+    <attr name="foregroundInsidePadding" format="boolean"/>
+  </declare-styleable>
+
+  <declare-styleable name="ScrimInsetsFrameLayout">
+    <attr name="insetForeground" format="color|reference"/>
+  </declare-styleable>
+
+  <declare-styleable name="MaterialComponents_FlexboxLayout_Layout">
+    <attr name="layout_order" format="integer"/>
+
+    <!-- Negative numbers are invalid. -->
+    <attr name="layout_flexGrow" format="float"/>
+
+    <!-- Negative numbers are invalid. -->
+    <attr name="layout_flexShrink" format="float"/>
+
+    <!--
+        The initial length in a percentage format relative to its parent. This is similar to the
+        flex-basis property in the original CSS specification.
+        (https://www.w3.org/TR/css-flexbox-1/#flex-basis-property)
+        But unlike the flex-basis property, this attribute only accepts a value in fraction
+        (percentage), whereas flex-basis property accepts width values such as 1em, 10px and
+        the 'content' string.
+        But specifying initial fixed width values can be done by specifying width values in
+        layout_width (or layout_height, varies depending on the flexDirection). Also the same
+        effect can be done by specifying "wrap_content" in layout_width (or layout_height) if
+        developers want to achieve the same effect as 'content'.
+        Thus, this attribute only accepts fraction values, which can't be done through
+        layout_width (or layout_height) for simplicity.
+    -->
+    <attr name="layout_flexBasisPercent" format="fraction"/>
+
+    <!--
+        Omitting flex property since it's a shorthand for layout_flexGrow and layout_flexShrink
+        and layout_percentInParent (flex-basis in the original CSS spec).
+    -->
+
+    <attr name="layout_minWidth" format="dimension"/>
+    <attr name="layout_minHeight" format="dimension"/>
+    <attr name="layout_maxWidth" format="dimension"/>
+    <attr name="layout_maxHeight" format="dimension"/>
+
+    <!--
+        This attribute forces a flex line wrapping. i.e. if this is set to true for a
+        flex item, the item will become the first item of a flex line. (A wrapping happens
+        regardless of the flex items being processed in the the previous flex line)
+        This attribute is ignored if the flex_wrap attribute is set to nowrap.
+        The equivalent attribute isn't defined in the original CSS Flexible Box Module
+        specification, but having this attribute is useful for Android developers to flatten
+        the layouts when building a grid like layout or for a situation where developers want
+        to put a new flex line to make a semantic difference from the previous one, etc.
+    -->
+    <attr name="layout_wrapBefore" format="boolean"/>
+  </declare-styleable>
+  <!-- Style to use for TextInputLayout in the theme. -->
+  <attr name="textInputStyle" format="reference"/>
+
+  <declare-styleable name="TextInputLayout">
+    <!-- The text color for input text. -->
+    <attr name="android:textColorHint"/>
+
+    <!-- The hint to display in the floating label. -->
+    <attr name="android:hint"/>
+    <!-- Whether the layout's floating label functionality is enabled. -->
+    <attr name="hintEnabled" format="boolean"/>
+    <!-- Whether to animate hint state changes. -->
+    <attr name="hintAnimationEnabled" format="boolean"/>
+    <!-- TextAppearance of the hint in the floating label. -->
+    <attr name="hintTextAppearance" format="reference"/>
+
+    <!-- The text to display as helper text underneath the text input area. -->
+    <attr name="helperText" format="string"/>
+    <!-- Whether the layout's helper text functionality is enabled. -->
+    <attr name="helperTextEnabled" format="boolean"/>
+    <!-- TextAppearance of the helper text displayed underneath the text input area. -->
+    <attr name="helperTextTextAppearance" format="reference"/>
+
+    <!-- Whether the layout is laid out as if an error will be displayed. -->
+    <attr name="errorEnabled" format="boolean"/>
+    <!-- TextAppearance of any error message displayed. -->
+    <attr name="errorTextAppearance" format="reference"/>
+
+    <!-- Whether the layout is laid out as if the character counter will be displayed. -->
+    <attr name="counterEnabled" format="boolean"/>
+    <!-- The max length to display in the character counter. -->
+    <attr name="counterMaxLength" format="integer"/>
+    <!-- TextAppearance of the character counter. -->
+    <attr name="counterTextAppearance" format="reference"/>
+    <!-- TextAppearance of the character counter when the text is longer than the max. -->
+    <attr name="counterOverflowTextAppearance" format="reference"/>
+
+    <!-- Whether the view will display a toggle when the EditText has a password. -->
+    <attr name="passwordToggleEnabled" format="boolean"/>
+    <!-- Drawable to use as the password input visibility toggle icon. -->
+    <attr name="passwordToggleDrawable" format="reference"/>
+    <!-- Text to set as the content description for the password input visibility toggle. -->
+    <attr name="passwordToggleContentDescription" format="string"/>
+    <!-- Icon to use for the password input visibility toggle -->
+    <attr name="passwordToggleTint" format="color"/>
+    <!-- Blending mode used to apply the background tint. -->
+    <attr name="passwordToggleTintMode">
+      <!-- The tint is drawn on top of the drawable.
+           [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc] -->
+      <enum name="src_over" value="3"/>
+      <!-- The tint is masked by the alpha channel of the drawable. The drawable’s
+           color channels are thrown out. [Sa * Da, Sc * Da] -->
+      <enum name="src_in" value="5"/>
+      <!-- The tint is drawn above the drawable, but with the drawable’s alpha
+           channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc] -->
+      <enum name="src_atop" value="9"/>
+      <!-- Multiplies the color and alpha channels of the drawable with those of
+           the tint. [Sa * Da, Sc * Dc] -->
+      <enum name="multiply" value="14"/>
+      <!-- [Sa + Da - Sa * Da, Sc + Dc - Sc * Dc] -->
+      <enum name="screen" value="15"/>
+    </attr>
+
+    <!-- Whether the text input area should be drawn as a filled box, an outline box, or not as a box.-->
+    <attr name="boxBackgroundMode">
+      <!-- Specifies that there should be no box set on the text input area. -->
+      <enum name="none" value="0"/>
+      <!-- Filled box mode for the text input box. -->
+      <enum name="filled" value="1"/>
+      <!-- Outline box mode for the text input box. -->
+      <enum name="outline" value="2"/>
+    </attr>
+    <!-- Value to use for the EditText's start padding in box mode. -->
+    <attr name="boxPaddingStart" format="dimension"/>
+    <!-- Value to use for the EditText's collapsed top padding in box mode. -->
+    <attr name="boxCollapsedPaddingTop" format="dimension"/>
+    <!-- Value to use for the EditText's expanded top padding in box mode. -->
+    <attr name="boxExpandedPaddingTop" format="dimension"/>
+    <!-- Value to use for the EditText's end padding in box mode. -->
+    <attr name="boxPaddingEnd" format="dimension"/>
+    <!-- Value to use for the EditText's collapsed bottom padding in box mode. -->
+    <attr name="boxCollapsedPaddingBottom" format="dimension"/>
+    <!-- The value to use for the box's top start corner radius when in box mode. -->
+    <attr name="boxCornerRadiusTopStart" format="dimension"/>
+    <!-- The value to use for the box's top end corner radius when in box mode. -->
+    <attr name="boxCornerRadiusTopEnd" format="dimension"/>
+    <!-- The value to use for the box's bottom start corner radius when in box mode. -->
+    <attr name="boxCornerRadiusBottomStart" format="dimension"/>
+    <!-- The value to use for the box's bottom end corner radius when in box mode. -->
+    <attr name="boxCornerRadiusBottomEnd" format="dimension"/>
+    <!-- Value to use for the EditText's expanded bottom padding in box mode. -->
+    <attr name="boxExpandedPaddingBottom" format="dimension"/>
+    <!-- The color to use for the box's stroke when in outline box mode. -->
+    <attr name="boxStrokeColor" format="color"/>
+    <!-- The color to use for the box's background color when in filled box mode. -->
+    <attr name="boxBackgroundColor" format="color"/>
+    <!-- The value to use for the box's stroke when in outline box mode. -->
+    <attr name="boxStrokeWidth" format="dimension"/>
+  </declare-styleable>
+</resources>
