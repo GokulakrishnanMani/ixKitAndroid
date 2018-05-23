@@ -32,7 +32,8 @@
   </style>
 
   <!-- Base style for TextInputLayout. You should use one of the sub-styles instead. -->
-  <style name="Base.Widget.MaterialComponents.TextInputLayout" parent="Widget.Design.TextInputLayout">
+  <style name="Base.Widget.MaterialComponents.TextInputLayout"
+      parent="Widget.Design.TextInputLayout">
     <item name="boxBackgroundMode">outline</item>
     <item name="boxBackgroundColor">@null</item>
     <item name="boxCornerRadiusTopStart">@dimen/mtrl_textinput_box_corner_radius_medium</item>
